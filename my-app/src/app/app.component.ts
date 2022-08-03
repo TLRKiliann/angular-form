@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
             Validators.minLength(6),
             Validators.maxLength(20)]
           ],
-        email: ['', Validators.required, Validators.email],
+        email: ['', [Validators.required, Validators.email]],
         password: ['', 
           [
             Validators.required,
