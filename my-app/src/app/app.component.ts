@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import Validation from './utils/validation';
 
 @Component({
@@ -9,12 +9,12 @@ import Validation from './utils/validation';
 })
 export class AppComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    fullName: new FormControl('');
-    userName: new FormControl('');
-    email: new FormControl('');
-    password: new FormControl('');
-    confirmPassword: new FormControl('');
-    acceptTerms: new FormControl(false);
+    fullName: new FormControl(''),
+    userName: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+    acceptTerms: new FormControl(false)
   })
   submitted = false;
 
@@ -22,27 +22,27 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
-    {
-      fullName: ['', Validators.required],
-      userName: ['',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(20)]
-        ],
-      email: ['', Validators.required, Validators.email],
-      password: ['', 
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(40)]
-        ],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: ['', Validators.requiredTrue]
-    },
-    {
-      validators: [Validators.match('password', 'confirmPassword')]
-    });
+      {
+        fullName: ['', Validators.required],
+        userName: ['',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(20)]
+          ],
+        email: ['', Validators.required, Validators.email],
+        password: ['', 
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(40)]
+          ],
+        confirmPassword: ['', Validators.required],
+        acceptTerms: ['', Validators.requiredTrue]
+      },
+      {
+        validators: [Validation.match('password', 'confirmPassword')]
+      });
   }
 
   get f(): { [key: string]: AbstractControl } {
