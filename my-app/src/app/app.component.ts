@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
         password: ['', 
           [
             Validators.required,
-            Validators.minLength(6),
+            Validators.minLength(10),
             Validators.maxLength(40)]
           ],
         confirmPassword: ['', Validators.required],
@@ -48,6 +48,14 @@ export class AppComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+  [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }"
 
   onSubmit(): void {
     this.submitted = true;
