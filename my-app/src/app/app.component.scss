@@ -1,0 +1,35 @@
+.register-form {
+	width: 40%;
+	padding: 20px 0px;
+	margin: auto;
+	margin-top: 10%;
+	display: flex;
+	justify-content: center;
+	background: steelblue;
+	border-radius: 12px;
+	box-shadow: 0px 0px 5px 10px white;
+	color: white;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: right;
+}
+
+input {
+	margin: 10px 10px;
+}
+
+.form-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+button {
+	margin: 10px 10px;
+	padding: 5px 20px;
+}
