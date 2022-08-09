@@ -49,14 +49,6 @@ export class AppComponent implements OnInit {
     return this.form.controls;
   }
 
-
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
-
-  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
-  [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }"
-
   onSubmit(): void {
     this.submitted = true;
 
