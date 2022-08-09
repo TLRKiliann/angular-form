@@ -1,9 +1,11 @@
-# Form (SIGN-UP)
+# Form (Sign-Up & Sign-In)
 
 
-**Version**
+## Angular version
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+
+---
 
 ## Install
 
@@ -23,9 +25,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 > app.component.ts
 
+```
 import { AbstractControl, FormGroup, FormControl, FormBuilder, Validators }
 import Validation from './utils/validation';
-
+```
 
 ---
 
@@ -68,8 +71,6 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
 ---
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
 ## Development server
 
