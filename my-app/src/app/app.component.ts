@@ -25,7 +25,11 @@ export class AppComponent implements OnInit {
 
   validated = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  keyVal: string;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.keyVal = "storageData";
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -66,6 +70,11 @@ export class AppComponent implements OnInit {
     });
   }
 
+  getItem(): void {
+    const local = JSON.parse(localStorage.getItem("storageData") || 'null')
+    return local;
+  }
+
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
@@ -84,11 +93,13 @@ export class AppComponent implements OnInit {
   }
 
   onValidate(): void {
+    //this.keyVal = "storageData";
     this.validated = true;
 
     if (this.signin.invalid) {
       return;
     }
+    localStorage.setItem(this.keyVal, JSON.stringify(this.signin.value, null, 2));
     console.log(JSON.stringify(this.signin.value, null, 2));
   }
 
@@ -96,4 +107,4 @@ export class AppComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
   }
-}
+};
