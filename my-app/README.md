@@ -1,4 +1,73 @@
-# MyApp
+# Form (SIGN-UP)
+
+
+**Version**
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+
+## Install
+
+> npm install -g @angular/cli
+
+> ng new my-app --style=scss
+
+> cd my-app
+
+> ng serve
+
+> ng test
+
+---
+
+## Schema
+
+> app.component.ts
+
+import { AbstractControl, FormGroup, FormControl, FormBuilder, Validators }
+import Validation from './utils/validation';
+
+
+---
+
+## Structure
+
+> app.module.ts
+
+```
+import { ReactiveFormsModule } from '@angular/forms';
+
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule
+  ],
+```
+
+---
+
+> app.component.ts
+
+```
+import Validation from './utils/validation';
+      {
+        validators: [Validation.match('password', 'confirmPassword')] // *Validation
+      });
+```
+
+`*Validation` = class Validation of `./utils/validation.ts`
+
+---
+
+> ./utils/validation.ts
+
+```
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+```
+
+> app.components.html
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
