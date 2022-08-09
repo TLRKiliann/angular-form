@@ -1,5 +1,5 @@
 <div class="register-form">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signup--form">
     <h1 [ngStyle]="{'text-align': 'center'}">Sign-Up</h1>
     <div class="form-group">
       <label>Full Name : </label>
@@ -116,6 +116,49 @@
       >
         Reset
       </button>
+    </div>
+  </form>
+
+
+  <form [formGroup]="signin" (ngSubmit)="onValidate()" class="signin--form">
+    <h1 [ngStyle]="{'text-align': 'center'}">Sign-In</h1>
+
+    <div class="form-group">
+      <label>Email : </label>
+      <input
+        type="text"
+        formControlName="siemail"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && g['siemail'].errors }"
+      />
+    </div>
+
+    <div *ngIf="submitted && g['siemail'].errors" class="invalid-feedback">
+      <div *ngIf="g['siemail'].errors['required']">Email is required</div>
+      <div *ngIf="g['siemail'].errors['siemail']">Email is invalid</div>
+    </div>
+
+    <div class="form-group">
+      <label>Password : </label>
+      <input
+        type="sipassword"
+        formControlName="sipassword"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && g['sipassword'].errors }"
+      />
+      <div *ngIf="submitted && g['sipassword'].errors" class="invalid-feedback">
+        <div *ngIf="g['sipassword'].errors['required']">Password is required</div>
+        <div *ngIf="g['sipassword'].errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+        <div *ngIf="g['sipassword'].errors['maxlength']">
+          Username must not exceed 40 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-btn">
+      <button type="submit" class="btn btn-primary">Enter</button>
     </div>
   </form>
 </div>

@@ -18,6 +18,13 @@ export class AppComponent implements OnInit {
   })
   submitted = false;
 
+  signin: FormGroup = new FormGroup({
+    siemail: new FormControl(''),
+    sipassword: new FormControl('')
+  })
+
+  validated = false;
+
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -42,11 +49,29 @@ export class AppComponent implements OnInit {
       },
       {
         validators: [Validation.match('password', 'confirmPassword')]
-      });
+    });
+
+    this.signin = this.formBuilder.group(
+      {
+        siemail: ['', [Validators.required, Validators.email]],
+        sipassword: ['', 
+          [
+            Validators.required,
+            Validators.minLength(10),
+            Validators.maxLength(40)]
+          ]
+        },
+        {
+          validators: [Validation.match('siemail', 'sipassword')]
+    });
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
+  }
+
+  get g(): { [key: string]: AbstractControl } {
+    return this.signin.controls;
   }
 
   onSubmit(): void {
@@ -56,6 +81,15 @@ export class AppComponent implements OnInit {
       return;
     }
     console.log(JSON.stringify(this.form.value, null, 2));
+  }
+
+  onValidate(): void {
+    this.validated = true;
+
+    if (this.signin.invalid) {
+      return;
+    }
+    console.log(JSON.stringify(this.signin.value, null, 2));
   }
 
   onReset(): void {
