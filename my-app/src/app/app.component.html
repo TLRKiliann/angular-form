@@ -9,6 +9,7 @@
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['fullName'].errors }"
       />
+
     </div>
 
     <div *ngIf="submitted && f['fullName'].errors" class="invalid-feedback">
@@ -58,16 +59,18 @@
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
       />
-      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-        <div *ngIf="f['password'].errors['required']">Password is required</div>
-        <div *ngIf="f['password'].errors['minlength']">
-          Password must be at least 6 characters
-        </div>
-        <div *ngIf="f['password'].errors['maxlength']">
-          Username must not exceed 40 characters
-        </div>
+    </div>
+
+    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+      <div *ngIf="f['password'].errors['required']">Password is required</div>
+      <div *ngIf="f['password'].errors['minlength']">
+        Password must be at least 6 characters
+      </div>
+      <div *ngIf="f['password'].errors['maxlength']">
+        Username must not exceed 40 characters
       </div>
     </div>
+
 
     <div class="form-group">
       <label>Confirm Password : </label>
@@ -81,8 +84,7 @@
 
     <div
       *ngIf="submitted && f['confirmPassword'].errors"
-      class="invalid-feedback"
-    >
+      class="invalid-feedback">
       <div *ngIf="f['confirmPassword'].errors['required']">
         Confirm Password is required
       </div>
@@ -108,7 +110,7 @@
     </div>
 
     <div class="form-btn">
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button (click)="onSubmit()" class="btn btn-primary">Register</button>
       <button
         type="button"
         (click)="onReset()"
@@ -128,12 +130,12 @@
       <input
         type="text"
         formControlName="siemail"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && g['siemail'].errors }"
+        class="form-group"
+        [ngClass]="{ 'is-invalid': validated && g['siemail'].errors }"
       />
     </div>
 
-    <div *ngIf="submitted && g['siemail'].errors" class="invalid-feedback">
+    <div *ngIf="validated && g['siemail'].errors" class="invalid-feedback">
       <div *ngIf="g['siemail'].errors['required']">Email is required</div>
       <div *ngIf="g['siemail'].errors['siemail']">Email is invalid</div>
     </div>
@@ -141,24 +143,25 @@
     <div class="form-group">
       <label>Password : </label>
       <input
-        type="sipassword"
+        type="password"
         formControlName="sipassword"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && g['sipassword'].errors }"
+        [ngClass]="{ 'is-invalid': validated && g['sipassword'].errors }"
       />
-      <div *ngIf="submitted && g['sipassword'].errors" class="invalid-feedback">
-        <div *ngIf="g['sipassword'].errors['required']">Password is required</div>
-        <div *ngIf="g['sipassword'].errors['minlength']">
-          Password must be at least 6 characters
-        </div>
-        <div *ngIf="g['sipassword'].errors['maxlength']">
-          Username must not exceed 40 characters
-        </div>
+    </div>
+
+    <div *ngIf="validated && g['sipassword'].errors" class="invalid-feedback">
+      <div *ngIf="g['sipassword'].errors['required']">Password is required</div>
+      <div *ngIf="g['sipassword'].errors['minlength']">
+        Password must be at least 6 characters
+      </div>
+      <div *ngIf="g['sipassword'].errors['maxlength']">
+        Username must not exceed 40 characters
       </div>
     </div>
 
     <div class="form-btn">
-      <button type="submit" class="btn btn-primary">Enter</button>
+      <button (click)="onValidate()" class="btn btn-primary">Enter</button>
     </div>
   </form>
 </div>
