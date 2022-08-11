@@ -1,7 +1,8 @@
 .register-form {
+	margin-top: 100px;
 	display: grid;
 	grid-template-columns: 4Fr 4Fr;
-	grid-template-rows: 1Fr 1Fr;
+	grid-template-rows: 1Fr;
 }
 .signup--form {
 	width: 75%;
@@ -110,4 +111,13 @@ button:active {
 
 span {
 	color: white;
+}
+
+.call--local {
+	margin: auto;
+	width: 70%;
+	margin-top: 50px;
+	justify-content: center;
+	background: steelblue;
+	border: 2px solid white;
 }

@@ -24,12 +24,9 @@ export class AppComponent implements OnInit {
   })
 
   validated = false;
+  data: any;
 
-  keyVal: string;
-
-  constructor(private formBuilder: FormBuilder) {
-    this.keyVal = "storageData";
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -70,11 +67,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getItem(): void {
-    const local = JSON.parse(localStorage.getItem("storageData") || 'null')
-    return local;
-  }
-
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
@@ -93,18 +85,25 @@ export class AppComponent implements OnInit {
   }
 
   onValidate(): void {
-    //this.keyVal = "storageData";
     this.validated = true;
 
     if (this.signin.invalid) {
       return;
     }
-    localStorage.setItem(this.keyVal, JSON.stringify(this.signin.value, null, 2));
     console.log(JSON.stringify(this.signin.value, null, 2));
+    localStorage.setItem("MyDataStored", JSON.stringify(this.signin.value));
+  }
+
+  onGetItem(data: string): void {
+    this.data = JSON.parse(localStorage.getItem("MyDataStored") || '{}');
+    if (this.data !== null) {
+      console.log("Return from localStorage", this.data);
+      return this.data;
+    }
   }
 
   onReset(): void {
     this.submitted = false;
     this.form.reset();
   }
-};
+}

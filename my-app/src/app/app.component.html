@@ -121,49 +121,52 @@
     </div>
   </form>
 
+  <div>
+    <form [formGroup]="signin" (ngSubmit)="onValidate()" class="signin--form">
+      <h1 [ngStyle]="{'text-align': 'center'}">Sign-In</h1>
 
-  <form [formGroup]="signin" (ngSubmit)="onValidate()" class="signin--form">
-    <h1 [ngStyle]="{'text-align': 'center'}">Sign-In</h1>
-
-    <div class="form-group">
-      <label>Email : </label>
-      <input
-        type="text"
-        formControlName="siemail"
-        class="form-group"
-        [ngClass]="{ 'is-invalid': validated && g['siemail'].errors }"
-      />
-    </div>
-
-    <div *ngIf="validated && g['siemail'].errors" class="invalid-feedback">
-      <div *ngIf="g['siemail'].errors['required']">Email is required</div>
-      <div *ngIf="g['siemail'].errors['siemail']">Email is invalid</div>
-    </div>
-
-    <div class="form-group">
-      <label>Password : </label>
-      <input
-        type="password"
-        formControlName="sipassword"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': validated && g['sipassword'].errors }"
-      />
-    </div>
-
-    <div *ngIf="validated && g['sipassword'].errors" class="invalid-feedback">
-      <div *ngIf="g['sipassword'].errors['required']">Password is required</div>
-      <div *ngIf="g['sipassword'].errors['minlength']">
-        Password must be at least 6 characters
+      <div class="form-group">
+        <label>Email : </label>
+        <input
+          type="text"
+          formControlName="siemail"
+          class="form-group"
+          [ngClass]="{ 'is-invalid': validated && g['siemail'].errors }"
+        />
       </div>
-      <div *ngIf="g['sipassword'].errors['maxlength']">
-        Username must not exceed 40 characters
-      </div>
-    </div>
 
-    <div class="form-btn">
-      <button (click)="onValidate()" class="btn btn-primary">Enter</button>
+      <div *ngIf="validated && g['siemail'].errors" class="invalid-feedback">
+        <div *ngIf="g['siemail'].errors['required']">Email is required</div>
+        <div *ngIf="g['siemail'].errors['siemail']">Email is invalid</div>
+      </div>
+
+      <div class="form-group">
+        <label>Password : </label>
+        <input
+          type="password"
+          formControlName="sipassword"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': validated && g['sipassword'].errors }"
+        />
+      </div>
+
+      <div *ngIf="validated && g['sipassword'].errors" class="invalid-feedback">
+        <div *ngIf="g['sipassword'].errors['required']">Password is required</div>
+        <div *ngIf="g['sipassword'].errors['minlength']">
+          Password must be at least 6 characters
+        </div>
+        <div *ngIf="g['sipassword'].errors['maxlength']">
+          Username must not exceed 40 characters
+        </div>
+      </div>
+
+      <div class="form-btn">
+        <button (click)="onValidate()" class="btn btn-primary">Enter</button>
+      </div>
+    </form>
+    <div class="call--local">
+      <button (click)="onGetItem(data)">localStorage(getItem)</button>
+      <span value={data} onChange={onGetItem(data)}>Look at console.log()</span>
     </div>
-  </form>
-    <button (click)="getItem()" class="btn-storage">Result localStorage</button>
-    <span>{{ signin.value }}</span>
+  </div>
 </div>
