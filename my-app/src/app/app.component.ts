@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   })
 
   validated = false;
+  data: any;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -90,6 +91,15 @@ export class AppComponent implements OnInit {
       return;
     }
     console.log(JSON.stringify(this.signin.value, null, 2));
+    localStorage.setItem("MyDataStored", JSON.stringify(this.signin.value));
+  }
+
+  onGetItem(data: string): void {
+    this.data = JSON.parse(localStorage.getItem("MyDataStored") || '{}');
+    if (this.data !== null) {
+      console.log("Return from localStorage", this.data);
+      return this.data;
+    }
   }
 
   onReset(): void {
