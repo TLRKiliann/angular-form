@@ -1,5 +1,6 @@
 # Form (Sign-Up & Sign-In)
 
+A little project just for testing a simple localStorage without services.
 
 ## Angular version
 
