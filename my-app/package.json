@@ -26,7 +26,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^21.2.1",
+    "@angular-devkit/build-angular": "^22.1.5",
     "@angular/cli": "~21.2.21",
     "@angular/compiler-cli": "^21.2.6",
     "@cypress/schematic": "^2.0.0",
